@@ -124,14 +124,21 @@ void Game::setupFontAndText()
 	{
 		std::cout << "problem loading arial black font" << std::endl;
 	}
-	m_welcomeMessage.setFont(m_ArialBlackfont);
-	m_welcomeMessage.setString("SFML Game");
-	m_welcomeMessage.setStyle(sf::Text::Underlined | sf::Text::Italic | sf::Text::Bold);
-	m_welcomeMessage.setPosition(40.0f, 40.0f);
-	m_welcomeMessage.setCharacterSize(80U);
-	m_welcomeMessage.setOutlineColor(sf::Color::Red);
-	m_welcomeMessage.setFillColor(sf::Color::Black);
-	m_welcomeMessage.setOutlineThickness(3.0f);
+	m_akiraName.setFont(m_ArialBlackfont);
+	m_akiraName.setString("Akira"); // set up fro character Akira name
+	m_akiraName.setStyle(sf::Text::Italic);
+	m_akiraName.setPosition(95.0f, 800.0f);
+	m_akiraName.setCharacterSize(40U);
+	m_akiraName.setOutlineColor(sf::Color::Black); 
+	m_akiraName.setFillColor(sf::Color::White); 
+	m_akiraName.setOutlineThickness(1.0f); 
+
+	m_AkiraTalk.setCharacterSize(40U);   // set up dialogue for the character Akira
+	m_AkiraTalk.setPosition(40.0f, 880.0f);
+	m_AkiraTalk.setFillColor(sf::Color::White);
+	m_AkiraTalk.setOutlineColor(sf::Color::Black);
+	m_AkiraTalk.setOutlineThickness(1.0f);
+	m_AkiraTalk.setFont(m_ArialBlackfont);  
 
 }
 
@@ -154,4 +161,20 @@ void Game::setupSprite()
 	m_textBoxSprite.setTexture(m_textBoxTexture) ;
 	m_textBoxSprite.setPosition(0.0f, 800.0f); 
 	m_textBoxSprite.setColor(colour); 
+
+	if (!m_AkariTexture.loadFromFile("ASSETS\\IMAGES\\akari_N1.png")) // the nutraul_1 texture for the character Akari
+	{
+		std::cout << "problem loading Akari" << std::endl;
+	}
+	if (!m_AkariTextureSerious.loadFromFile("ASSETS\\IMAGES\\akari_S1.png")) // the serious_1 texture for the character Akari
+	{
+		std::cout << "problem loading Akari" << std::endl;
+	}
+	if (!m_AkariTextureHappy.loadFromFile("ASSETS\\IMAGES\\akari_H1.png")) // the happy_1 texture for the character Akari
+	{
+		std::cout << "problem loading Akari" << std::endl;
+	}
+	m_AkariSprite.setTexture(m_AkariTexture);
+	m_AkariSprite.setPosition(0.0f, -250.0f);
+	m_AkariSprite.setScale(1.5f, 1.5f); 
 }

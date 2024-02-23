@@ -47,6 +47,14 @@ private:
 	sf::Texture m_textBoxTexture; // texture for the text box 
 	sf::Sprite m_textBoxSprite; // sprite for the text box 
 
+	sf::Texture m_AkariTexture; // the nutrual texture for the chararacter akari 
+	sf::Texture m_AkariTextureSerious; // the serious texture for the character akari 
+	sf::Texture m_AkariTextureHappy; // the happy texture for the character akari 
+	sf::Sprite m_AkariSprite; // the sprite for the character akari 
+	sf::Text m_akiraName; // text used for displaying the characters name in the text box 
+	sf::Text m_AkiraTalk; // used to store and change what text the character is saying 
+
+
 	sf::Color colour{ 255u , 255u, 255u, 155u };  // used to make the text box see though and the characters see through when not talking
 
 
