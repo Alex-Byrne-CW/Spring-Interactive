@@ -73,6 +73,14 @@ private:
 	sf::Vector2f m_AkariLocation = { 0.0f , -250.0f }; // used to make the text box see though and the characters see through when not talking
 	sf::Vector2f m_AkariVilocity = { 0.0f, 0.0f }; // used to set the characters textures to normal
 
+	sf::Texture m_yuriTextureNutrual1; 
+	sf::Texture m_yuriTextureNutrual2;
+	sf::Texture m_yuriTextureHappy1;
+	sf::Texture m_yuriTextureHappy2;
+	sf::Texture m_yuriTextureSad1; 
+	sf::Sprite m_yuriSprite;
+
+
 	sf::Text m_HajimeName; // used to store the players name in the text box 
 	sf::Text m_HajimeText; // userd to store the players dialogue text 
 

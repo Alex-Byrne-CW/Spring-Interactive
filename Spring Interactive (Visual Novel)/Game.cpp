@@ -420,6 +420,19 @@ void Game::setupSprite()
 	m_AkariSprite.setTexture(m_AkariTexture);
 	m_AkariSprite.setPosition(0.0f, -250.0f);
 	m_AkariSprite.setScale(1.5f, 1.5f); 
+
+	if (!m_yuriTextureNutrual1.loadFromFile("ASSETS\\IMAGES\\yuri_N1.png"))
+	{
+		std::cout << "problem loading yuri nutrual1" << std::endl;
+	}
+	m_yuriSprite.setTexture(m_yuriTextureNutrual1);
+	m_yuriSprite.setPosition(0.0f, -500.0f);
+	m_yuriSprite.setScale(1.5f, 1.5f);
+
+
+
+
+
 }
 
 void Game::setupBackgrounds()
