@@ -81,7 +81,7 @@ private:
 
 	sf::RectangleShape m_choice1A;
 	sf::RectangleShape m_choice1A_Boarder;
-	sf::Text m_ChoiceeText1A;
+	sf::Text m_choiceText1A;
 
 	sf::RectangleShape m_choice1B;
 	sf::RectangleShape m_choice1B_Boarder;

@@ -103,13 +103,27 @@ void Game::processKeys(sf::Event t_event)
 void Game::processMouse(sf::Event t_event)
 {
 	m_mouseEnd.x = static_cast<float>(t_event.mouseButton.x); // finding the x value of the mouse click
-	m_mouseEnd.y = static_cast<float>(t_event.mouseButton.x); // finding the y value of the mouse click
+	m_mouseEnd.y = static_cast<float>(t_event.mouseButton.y); // finding the y value of the mouse click
 
-	// the boarders of the choice boxes
+	// the boarders of the first 2 choice boxes
 	sf::Vector2f choiceCornerA1 = { 607.5f , 510.0f }; 
 	sf::Vector2f choiceCornerA2 = { 1307.5f , 590.0f }; 
 	sf::Vector2f choiceCornerB1 = { 607.5f , 310.0f }; 
 	sf::Vector2f choiceCornerB2 = { 1307.5f , 390.0f }; 
+
+	if (counter == 8)
+	{
+		if (m_mouseEnd.x > choiceCornerA1.x && m_mouseEnd.x < choiceCornerA2.x && m_mouseEnd.y > choiceCornerA1.y && m_mouseEnd.y < choiceCornerA2.y)
+		{
+			counter++;
+			choice1A = true;
+		}
+		if (m_mouseEnd.x > choiceCornerB1.x && m_mouseEnd.x < choiceCornerB2.x && m_mouseEnd.y > choiceCornerB1.y && m_mouseEnd.y < choiceCornerB2.y) 
+		{ 
+			counter++; 
+			choice1B = true; 
+		}
+	}
 }
 
 /// <summary>
@@ -190,6 +204,25 @@ void Game::render()
 		m_window.draw(m_HajimeText);  // player diologue
 		m_window.draw(m_HajimeName);  // player name
 	}
+	if (counter == 8) // ninth scene
+	{
+		m_window.draw(m_loadingSprite); // loading screne 
+		m_window.draw(m_choice1A);
+		m_window.draw(m_choice1A_Boarder);
+		m_window.draw(m_choice1B);
+		m_window.draw(m_choice1B_Boarder);
+		m_window.draw(m_choiceText1A);
+		m_window.draw(m_choiceText1B);
+	}
+	if (counter == 9 && choice1A == true && choice1B == false) // tenth scene choice A
+	{
+		m_window.draw(m_classroomSprite); 
+	}
+	if (counter == 9 && choice1B == true && choice1A == false) // tenth scene choice B 
+	{
+		m_window.draw(m_librarySprite); 
+	}
+	
 	m_window.display();
 }
 
@@ -305,6 +338,20 @@ void Game::setupFontAndText()
 	m_HajimeText.setOutlineColor(sf::Color::Black); 
 	m_HajimeText.setOutlineThickness(1.0f); 
 	m_HajimeText.setFont(m_ArialBlackfont);  
+
+	m_choiceText1A.setCharacterSize(40U);  // set up for player dialogue
+	m_choiceText1A.setPosition(840.0f, 525.0f);
+	m_choiceText1A.setFillColor(sf::Color::White);
+	m_choiceText1A.setOutlineColor(sf::Color::Black);
+	m_choiceText1A.setOutlineThickness(1.0f);
+	m_choiceText1A.setFont(m_ArialBlackfont);
+
+	m_choiceText1B.setCharacterSize(35U);  // set up for player dialogue
+	m_choiceText1B.setPosition(660.0f, 330.0f);
+	m_choiceText1B.setFillColor(sf::Color::White);
+	m_choiceText1B.setOutlineColor(sf::Color::Black);
+	m_choiceText1B.setOutlineThickness(1.0f);
+	m_choiceText1B.setFont(m_ArialBlackfont);
 }
 
 /// <summary>
@@ -386,7 +433,7 @@ void Game::choice() // a function to create the choice boxes for the player to s
 	m_choice1A_Boarder.setOrigin(340.0f, 30.0f); 
 	m_choice1A_Boarder.setPosition(957.5f, 550.0f); 
 
-	m_ChoiceeText1A.setString("Go to class"); // setting up the text for the first option box
+	m_choiceText1A.setString("Go to class"); // setting up the text for the first option box 
 
 	//setting up the second choice option box
 	m_choice1B.setFillColor(sf::Color::White); 
