@@ -109,7 +109,10 @@ void Game::update(sf::Time t_deltaTime)
 	akari(); 
 	akariText(); 
 	HakimeText();
-	movement();
+	if (counter == 5 && m_AkariLocation.x > -660.0f)
+	{
+		movement(); // akari scene 5 movement
+	}
 }
 
 /// <summary>
@@ -154,6 +157,11 @@ void Game::render()
 		m_window.draw(m_AkiraTalk); // character diologue 
 		m_window.draw(m_akiraName); // character name 
 	} 
+	if (counter == 5) // sixth scene
+	{
+		m_window.draw(m_AkariSprite); // character sprite
+		m_window.draw(m_textBoxSprite); // text box
+	}
 	m_window.display();
 }
 
@@ -212,9 +220,12 @@ void Game::HakimeText()
 }
 void Game::movement() // a function to determain the movement of the characters
 {
-	m_AkariVilocity += Speed; 
-	m_AkariLocation += m_AkariVilocity;
-	m_AkariSprite.setPosition(m_AkariLocation);
+	if (counter == 5)
+	{
+		m_AkariVilocity += Speed;
+		m_AkariLocation += m_AkariVilocity;
+		m_AkariSprite.setPosition(m_AkariLocation);
+	}
 }
 
 
