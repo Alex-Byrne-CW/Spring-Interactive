@@ -37,6 +37,7 @@ private:
 
 	void setupFontAndText();
 	void setupSprite();
+	void setupBackgrounds(); 
 
 	sf::RenderWindow m_window; // main SFML window
 	sf::Font m_ArialBlackfont; // font used by message
@@ -45,6 +46,15 @@ private:
 	
 	sf::Texture m_backGround1Texture; // texture for the background
 	sf::Sprite m_backGround1Sprite;  // sprite for the background
+
+	sf::Texture m_classroomTexture; // texture for the classroom
+	sf::Sprite m_classroomSprite; // sprite for the classroom
+
+	sf::Texture m_libraryTexture; // texture for the library
+	sf::Sprite m_librarySprite; // sprite for the library
+
+	sf::Texture m_loadingTexture; // texture for the loadings creen
+	sf::Sprite m_loadingSprite;  // sprite for the losading screen
 
 
 	sf::Texture m_textBoxTexture; // texture for the text box 

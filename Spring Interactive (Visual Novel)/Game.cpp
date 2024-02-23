@@ -296,20 +296,7 @@ void Game::setupFontAndText()
 /// </summary>
 void Game::setupSprite()
 {
-	if (!m_backGround1Texture.loadFromFile("ASSETS\\IMAGES\\bg1.jpg")) // texture for background
-	{
-		std::cout << "problem loading background" << std::endl;
-	}
-	m_backGround1Sprite.setTexture(m_backGround1Texture);
-	m_backGround1Sprite.setPosition(0.0f, 0.0f); 
-
-	if (!m_textBoxTexture.loadFromFile("ASSETS\\IMAGES\\textbox.png")) // texture for text box
-	{
-		std::cout << "problem loading textbox" << std::endl;
-	}
-	m_textBoxSprite.setTexture(m_textBoxTexture) ;
-	m_textBoxSprite.setPosition(0.0f, 800.0f); 
-	m_textBoxSprite.setColor(colour); 
+	setupBackgrounds(); 
 
 	if (!m_AkariTexture.loadFromFile("ASSETS\\IMAGES\\akari_N1.png")) // the nutraul_1 texture for the character Akari
 	{
@@ -326,4 +313,52 @@ void Game::setupSprite()
 	m_AkariSprite.setTexture(m_AkariTexture);
 	m_AkariSprite.setPosition(0.0f, -250.0f);
 	m_AkariSprite.setScale(1.5f, 1.5f); 
+}
+
+void Game::setupBackgrounds()
+{
+	if (!m_backGround1Texture.loadFromFile("ASSETS\\IMAGES\\bg1.jpg")) // texture for background 
+	{
+		std::cout << "problem loading background" << std::endl; 
+	}
+	m_backGround1Sprite.setTexture(m_backGround1Texture);  
+	m_backGround1Sprite.setPosition(0.0f, 0.0f);  
+
+	if (!m_classroomTexture.loadFromFile("ASSETS\\IMAGES\\class.png")) // texture for background 
+	{
+		std::cout << "problem loading background" << std::endl; 
+	}
+	m_classroomSprite.setTexture(m_classroomTexture); 
+	m_classroomSprite.setPosition(0.0f, 0.0f); 
+
+	if (!m_libraryTexture.loadFromFile("ASSETS\\IMAGES\\library.png")) // texture for background  
+	{
+		std::cout << "problem loading background" << std::endl; 
+	}
+	m_librarySprite.setTexture(m_libraryTexture); 
+	m_librarySprite.setPosition(0.0f, 0.0f); 
+
+
+	if (!m_loadingTexture.loadFromFile("ASSETS\\IMAGES\\loading.jpg")) // texture for loading screne  
+	{
+		std::cout << "problem with loading" << std::endl; 
+	}
+	m_loadingSprite.setTexture(m_loadingTexture); 
+	m_loadingSprite.setPosition(0.0f, 0.0f); 
+
+	if (!m_textBoxTexture.loadFromFile("ASSETS\\IMAGES\\textbox.png")) // texture for text box 
+	{
+		std::cout << "problem loading textbox" << std::endl; 
+	}
+	m_textBoxSprite.setTexture(m_textBoxTexture); 
+	m_textBoxSprite.setPosition(0.0f, 800.0f); 
+	m_textBoxSprite.setColor(colour); 
+
+
+
+
+
+
+
+
 }
