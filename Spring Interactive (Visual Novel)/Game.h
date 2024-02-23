@@ -60,7 +60,7 @@ private:
 
 
 	sf::Color colour{ 255u , 255u, 255u, 155u };  // used to make the text box see though and the characters see through when not talking
-
+	sf::Color Default{ 255u , 255u, 255u, 255u }; // used to set the characters textures to normal 
 
 	bool m_exitGame; // control exiting game
 

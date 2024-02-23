@@ -139,6 +139,20 @@ void Game::render()
 		m_window.draw(m_HajimeText); // player diologue
 		m_window.draw(m_HajimeName); // player name
 	}
+	if (counter == 3) // fourth scene
+	{
+		m_window.draw(m_AkariSprite); //character sprite
+		m_window.draw(m_textBoxSprite); //text box
+		m_window.draw(m_AkiraTalk);
+		m_window.draw(m_akiraName); // character name
+	}
+	if (counter == 4) // fifth scene
+	{
+		m_window.draw(m_AkariSprite); //character sprite 
+		m_window.draw(m_textBoxSprite); //text box 
+		m_window.draw(m_AkiraTalk); // character diologue 
+		m_window.draw(m_akiraName); // character name 
+	} 
 	m_window.display();
 }
 
@@ -157,6 +171,15 @@ void Game::akari()
 	{
 		m_AkariSprite.setColor(colour); 
 	}
+	if (counter == 3) // scene four
+	{
+		m_AkariSprite.setColor(Default);
+		m_AkariSprite.setTexture(m_AkariTextureHappy);
+	}
+	if (counter == 4) // scene five
+	{ 
+		m_AkariSprite.setTexture(m_AkariTexture); 
+	}
 }
 
 void Game::akariText()
@@ -169,6 +192,14 @@ void Game::akariText()
 	{ 
 		m_AkiraTalk.setString("Do i make myself clear?"); 
 	} 
+	if (counter == 3) // scene four
+	{
+		m_AkiraTalk.setString("Great! then we shouldn't have a problem"); 
+	}
+	if (counter == 4) // scene five
+	{
+		m_AkiraTalk.setString("Well i have to get going New kid. \nthe student council work never rests you know!");
+	}
 }
 
 void Game::HakimeText()
