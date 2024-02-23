@@ -94,7 +94,13 @@ private:
 	bool choice1B = { false };
 
 	sf::SoundBuffer m_themeMusic; // background music
-	sf::Sound m_theme;  
+	sf::Sound m_theme; 
+
+	sf::SoundBuffer m_chuckleSound; // chuckle sound effect
+	sf::Sound m_chuckle; 
+
+	sf::SoundBuffer m_sighSound; // sigh sound effect 
+	sf::Sound m_sigh; 
 
 	bool m_exitGame; // control exiting game
 

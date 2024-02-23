@@ -258,6 +258,7 @@ void Game::akariText() // a function for the dialogue text for the character aka
 	if (counter == 0) // scene one
 	{
 		m_AkiraTalk.setString("so your the new kid? \nvery well, all you have to know is follow the rules and dont cause trouble or else.......");
+		m_sigh.play(); 
 	} 
 	if (counter == 1) // scene two 
 	{ 
@@ -266,6 +267,7 @@ void Game::akariText() // a function for the dialogue text for the character aka
 	if (counter == 3) // scene four
 	{
 		m_AkiraTalk.setString("Great! then we shouldn't have a problem"); 
+		
 	}
 	if (counter == 4) // scene five
 	{
@@ -278,6 +280,7 @@ void Game::HakimeText() // function for the player's dialogue text
 	if (counter == 2) // scene three
 	{
 		m_HajimeText.setString("U-Understood ma'am"); 
+		m_chuckle.play(); 
 	} 
 	if (counter == 6) // scene seven
 	{
@@ -365,6 +368,18 @@ void Game::setupSound() // a function to load and play audio files
 	m_theme.setVolume(25.f); 
 	m_theme.setLoop(true);
 	m_theme.play();
+
+	if (!m_chuckleSound.loadFromFile("ASSETS\\AUDIO\\chuckle.flac")) 
+	{
+		std::cout << "problem with sound" << std::endl; 
+	}
+	m_chuckle.setBuffer(m_chuckleSound); 
+
+	if (!m_sighSound.loadFromFile("ASSETS\\AUDIO\\sigh.flac"))
+	{
+		std::cout << "problem with sound" << std::endl;
+	}
+	m_sigh.setBuffer(m_sighSound);
 }
 
 /// <summary>
