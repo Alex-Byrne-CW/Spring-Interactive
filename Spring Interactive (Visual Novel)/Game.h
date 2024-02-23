@@ -9,6 +9,7 @@
 /// Don't forget the endif at the bottom
 /// </summary>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp> 
 
 class Game
 {
@@ -37,6 +38,7 @@ private:
 
 
 	void setupFontAndText();
+	void setupSound();
 	void setupSprite();
 	void setupBackgrounds(); 
 	void choice();
@@ -90,6 +92,9 @@ private:
 	sf::Vector2f m_mouseEnd;
 	bool choice1A = { false };
 	bool choice1B = { false };
+
+	sf::SoundBuffer m_themeMusic; // background music
+	sf::Sound m_theme;  
 
 	bool m_exitGame; // control exiting game
 

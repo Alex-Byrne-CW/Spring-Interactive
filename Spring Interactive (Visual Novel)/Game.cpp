@@ -21,6 +21,7 @@ Game::Game() :
 {
 	setupFontAndText(); // load font 
 	setupSprite(); // load texture
+	setupSound(); // load audio
 }
 
 /// <summary>
@@ -352,6 +353,18 @@ void Game::setupFontAndText()
 	m_choiceText1B.setOutlineColor(sf::Color::Black);
 	m_choiceText1B.setOutlineThickness(1.0f);
 	m_choiceText1B.setFont(m_ArialBlackfont);
+}
+
+void Game::setupSound() // a function to load and play audio files
+{
+	if (!m_themeMusic.loadFromFile("ASSETS\\AUDIO\\theme.flac"))
+	{
+		std::cout << "problem with sound" << std::endl;
+	}
+	m_theme.setBuffer(m_themeMusic);
+	m_theme.setVolume(25.f); 
+	m_theme.setLoop(true);
+	m_theme.play();
 }
 
 /// <summary>
