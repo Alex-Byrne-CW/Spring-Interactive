@@ -32,6 +32,7 @@ private:
 	void akariText(); // a function to set and change the dialogue of the character akari 
 	void HakimeText(); // a function to set up and change the text for the player character
 
+	void movement(); // a function to determain the movement of the characters
 
 
 	void setupFontAndText();
@@ -54,6 +55,8 @@ private:
 	sf::Sprite m_AkariSprite; // the sprite for the character akari 
 	sf::Text m_akiraName; // text used for displaying the characters name in the text box 
 	sf::Text m_AkiraTalk; // used to store and change what text the character is saying 
+	sf::Vector2f m_AkariLocation = { 0.0f , -250.0f }; // used to make the text box see though and the characters see through when not talking
+	sf::Vector2f m_AkariVilocity = { 0.0f, 0.0f }; // used to set the characters textures to normal
 
 	sf::Text m_HajimeName; // used to store the players name in the text box 
 	sf::Text m_HajimeText; // userd to store the players dialogue text 
@@ -61,6 +64,7 @@ private:
 
 	sf::Color colour{ 255u , 255u, 255u, 155u };  // used to make the text box see though and the characters see through when not talking
 	sf::Color Default{ 255u , 255u, 255u, 255u }; // used to set the characters textures to normal 
+	sf::Vector2f Speed = { -5.0f , 0.0f }; 
 
 	bool m_exitGame; // control exiting game
 

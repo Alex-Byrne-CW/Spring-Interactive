@@ -109,6 +109,7 @@ void Game::update(sf::Time t_deltaTime)
 	akari(); 
 	akariText(); 
 	HakimeText();
+	movement();
 }
 
 /// <summary>
@@ -208,7 +209,14 @@ void Game::HakimeText()
 	{
 		m_HajimeText.setString("U-Understood ma'am"); 
 	} 
-} 
+}
+void Game::movement() // a function to determain the movement of the characters
+{
+	m_AkariVilocity += Speed; 
+	m_AkariLocation += m_AkariVilocity;
+	m_AkariSprite.setPosition(m_AkariLocation);
+}
+
 
 /// <summary>
 /// load the font and setup the text message for screen
