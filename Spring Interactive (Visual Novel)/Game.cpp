@@ -92,7 +92,7 @@ void Game::processKeys(sf::Event t_event)
 	}
 	if (sf::Keyboard::Space == t_event.key.code) 
 	{
-		counterText();  // scene counter 
+		counterText();  // scene counter  
 	}
 }
 
@@ -108,6 +108,7 @@ void Game::update(sf::Time t_deltaTime)
 	}
 	akari(); 
 	akariText(); 
+	HakimeText();
 }
 
 /// <summary>
@@ -124,16 +125,38 @@ void Game::render()
 		m_window.draw(m_AkiraTalk); //diologue  
 		m_window.draw(m_akiraName); //name in text box 
 	}
+	if (counter == 1) // second scene
+	{
+		m_window.draw(m_AkariSprite); //character sprite
+		m_window.draw(m_textBoxSprite); //text box
+		m_window.draw(m_AkiraTalk); //diologue 
+		m_window.draw(m_akiraName); //name in text box
+	}
+	if (counter == 2) // third scene
+	{
+		m_window.draw(m_AkariSprite);  //character sprite
+		m_window.draw(m_textBoxSprite); //text box
+		m_window.draw(m_HajimeText); // player diologue
+		m_window.draw(m_HajimeName); // player name
+	}
 	m_window.display();
 }
 
-void Game::counterText()
+void Game::counterText() 
 {
 	counter++;
 }
 
 void Game::akari()
 {
+	if (counter == 1) // scene two
+	{
+		m_AkariSprite.setTexture(m_AkariTextureSerious); 
+	}
+	if (counter == 2) // scene three 
+	{
+		m_AkariSprite.setColor(colour); 
+	}
 }
 
 void Game::akariText()
@@ -142,7 +165,19 @@ void Game::akariText()
 	{
 		m_AkiraTalk.setString("so your the new kid? \nvery well, all you have to know is follow the rules and dont cause trouble or else.......");
 	} 
+	if (counter == 1) // scene two 
+	{ 
+		m_AkiraTalk.setString("Do i make myself clear?"); 
+	} 
 }
+
+void Game::HakimeText()
+{
+	if (counter == 2) // scene three
+	{
+		m_HajimeText.setString("U-Understood ma'am"); 
+	} 
+} 
 
 /// <summary>
 /// load the font and setup the text message for screen
@@ -167,8 +202,23 @@ void Game::setupFontAndText()
 	m_AkiraTalk.setFillColor(sf::Color::White);
 	m_AkiraTalk.setOutlineColor(sf::Color::Black);
 	m_AkiraTalk.setOutlineThickness(1.0f);
-	m_AkiraTalk.setFont(m_ArialBlackfont);  
+	m_AkiraTalk.setFont(m_ArialBlackfont); 
 
+	m_HajimeName.setFont(m_ArialBlackfont); 
+	m_HajimeName.setString("Hajime"); // set up for player name 
+	m_HajimeName.setStyle(sf::Text::Italic); 
+	m_HajimeName.setPosition(80.0f, 800.0f); 
+	m_HajimeName.setCharacterSize(40U); 
+	m_HajimeName.setOutlineColor(sf::Color::Black); 
+	m_HajimeName.setFillColor(sf::Color::Yellow); 
+	m_HajimeName.setOutlineThickness(1.0f); 
+
+	m_HajimeText.setCharacterSize(40U);  // set up for player dialogue 
+	m_HajimeText.setPosition(40.0f, 880.0f); 
+	m_HajimeText.setFillColor(sf::Color::Yellow); 
+	m_HajimeText.setOutlineColor(sf::Color::Black); 
+	m_HajimeText.setOutlineThickness(1.0f); 
+	m_HajimeText.setFont(m_ArialBlackfont);  
 }
 
 /// <summary>

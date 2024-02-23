@@ -30,7 +30,7 @@ private:
 	void counterText();  // a function to increase a counter veriable which is used to go from scene to scene
 	void akari(); // a function to set up the sprite textures for the character akari 
 	void akariText(); // a function to set and change the dialogue of the character akari 
-
+	void HakimeText(); // a function to set up and change the text for the player character
 
 
 
@@ -54,6 +54,9 @@ private:
 	sf::Sprite m_AkariSprite; // the sprite for the character akari 
 	sf::Text m_akiraName; // text used for displaying the characters name in the text box 
 	sf::Text m_AkiraTalk; // used to store and change what text the character is saying 
+
+	sf::Text m_HajimeName; // used to store the players name in the text box 
+	sf::Text m_HajimeText; // userd to store the players dialogue text 
 
 
 	sf::Color colour{ 255u , 255u, 255u, 155u };  // used to make the text box see though and the characters see through when not talking
