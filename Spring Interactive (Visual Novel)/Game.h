@@ -24,6 +24,7 @@ private:
 
 	void processEvents();
 	void processKeys(sf::Event t_event);
+	void processMouse(sf::Event t_event); 
 	void update(sf::Time t_deltaTime);
 	void render();
 	
@@ -38,6 +39,7 @@ private:
 	void setupFontAndText();
 	void setupSprite();
 	void setupBackgrounds(); 
+	void choice();
 
 	sf::RenderWindow m_window; // main SFML window
 	sf::Font m_ArialBlackfont; // font used by message
@@ -76,6 +78,18 @@ private:
 	sf::Color colour{ 255u , 255u, 255u, 155u };  // used to make the text box see though and the characters see through when not talking
 	sf::Color Default{ 255u , 255u, 255u, 255u }; // used to set the characters textures to normal 
 	sf::Vector2f Speed = { -5.0f , 0.0f }; 
+
+	sf::RectangleShape m_choice1A;
+	sf::RectangleShape m_choice1A_Boarder;
+	sf::Text m_ChoiceeText1A;
+
+	sf::RectangleShape m_choice1B;
+	sf::RectangleShape m_choice1B_Boarder;
+	sf::Text m_choiceText1B;
+
+	sf::Vector2f m_mouseEnd;
+	bool choice1A = { false };
+	bool choice1B = { false };
 
 	bool m_exitGame; // control exiting game
 

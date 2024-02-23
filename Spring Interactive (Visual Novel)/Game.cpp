@@ -76,6 +76,10 @@ void Game::processEvents()
 		{
 			processKeys(newEvent);
 		}
+		if (sf::Event::MouseButtonPressed == newEvent.type)
+		{
+			processMouse(newEvent);
+		}
 	}
 }
 
@@ -94,6 +98,18 @@ void Game::processKeys(sf::Event t_event)
 	{
 		counterText();  // scene counter  
 	}
+}
+
+void Game::processMouse(sf::Event t_event)
+{
+	m_mouseEnd.x = static_cast<float>(t_event.mouseButton.x); // finding the x value of the mouse click
+	m_mouseEnd.y = static_cast<float>(t_event.mouseButton.x); // finding the y value of the mouse click
+
+	// the boarders of the choice boxes
+	sf::Vector2f choiceCornerA1 = { 607.5f , 510.0f }; 
+	sf::Vector2f choiceCornerA2 = { 1307.5f , 590.0f }; 
+	sf::Vector2f choiceCornerB1 = { 607.5f , 310.0f }; 
+	sf::Vector2f choiceCornerB2 = { 1307.5f , 390.0f }; 
 }
 
 /// <summary>
@@ -177,12 +193,12 @@ void Game::render()
 	m_window.display();
 }
 
-void Game::counterText() 
+void Game::counterText() //a function to increase the counter which determines what scene is playing
 {
 	counter++;
 }
 
-void Game::akari()
+void Game::akari() // a function for the sprite and textures for the character akari
 {
 	if (counter == 1) // scene two
 	{
@@ -203,7 +219,7 @@ void Game::akari()
 	}
 }
 
-void Game::akariText()
+void Game::akariText() // a function for the dialogue text for the character akari
 {
 	if (counter == 0) // scene one
 	{
@@ -223,7 +239,7 @@ void Game::akariText()
 	}
 }
 
-void Game::HakimeText()
+void Game::HakimeText() // function for the player's dialogue text
 {
 	if (counter == 2) // scene three
 	{
@@ -296,6 +312,7 @@ void Game::setupFontAndText()
 /// </summary>
 void Game::setupSprite()
 {
+	choice(); 
 	setupBackgrounds(); 
 
 	if (!m_AkariTexture.loadFromFile("ASSETS\\IMAGES\\akari_N1.png")) // the nutraul_1 texture for the character Akari
@@ -353,12 +370,35 @@ void Game::setupBackgrounds()
 	m_textBoxSprite.setTexture(m_textBoxTexture); 
 	m_textBoxSprite.setPosition(0.0f, 800.0f); 
 	m_textBoxSprite.setColor(colour); 
+}
 
+void Game::choice() // a function to create the choice boxes for the player to select
+{
+	//setting up the first choice option box
+	m_choice1A.setFillColor(sf::Color::White); 
+	m_choice1A.setSize(sf::Vector2f{ 700.0f, 80.0f }); 
+	m_choice1A.setOrigin(350.0f, 40.0f); 
+	m_choice1A.setPosition(957.5f, 550.0f); 
 
+	//setting up the first choice option box boarder
+	m_choice1A_Boarder.setFillColor(sf::Color::Black); 
+	m_choice1A_Boarder.setSize(sf::Vector2f{ 680.0f, 60.0f }); 
+	m_choice1A_Boarder.setOrigin(340.0f, 30.0f); 
+	m_choice1A_Boarder.setPosition(957.5f, 550.0f); 
 
+	m_ChoiceeText1A.setString("Go to class"); // setting up the text for the first option box
 
+	//setting up the second choice option box
+	m_choice1B.setFillColor(sf::Color::White); 
+	m_choice1B.setSize(sf::Vector2f{ 700.0f, 80.0f }); 
+	m_choice1B.setOrigin(350.0f, 40.0f); 
+	m_choice1B.setPosition(957.5f, 350.0f); 
 
+	//setting up the second choice option box boarder
+	m_choice1B_Boarder.setFillColor(sf::Color::Black); 
+	m_choice1B_Boarder.setSize(sf::Vector2f{ 680.0f, 60.0f }); 
+	m_choice1B_Boarder.setOrigin(340.0f, 30.0f); 
+	m_choice1B_Boarder.setPosition(957.5f, 350.0f); 
 
-
-
+	m_choiceText1B.setString("skip class and play videogames");  // setting up the text for the second option box
 }
