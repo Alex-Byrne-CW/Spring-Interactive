@@ -162,6 +162,18 @@ void Game::render()
 		m_window.draw(m_AkariSprite); // character sprite
 		m_window.draw(m_textBoxSprite); // text box
 	}
+	if (counter == 6) // seventh scene
+	{
+		m_window.draw(m_textBoxSprite); //text box  
+		m_window.draw(m_HajimeText); // player diologue
+		m_window.draw(m_HajimeName); // player name
+	}
+	if (counter == 7) // eighth scene
+	{
+		m_window.draw(m_textBoxSprite);  //text box  
+		m_window.draw(m_HajimeText);  // player diologue
+		m_window.draw(m_HajimeName);  // player name
+	}
 	m_window.display();
 }
 
@@ -217,6 +229,14 @@ void Game::HakimeText()
 	{
 		m_HajimeText.setString("U-Understood ma'am"); 
 	} 
+	if (counter == 6) // scene seven
+	{
+		m_HajimeText.setString("so thats the student council president? \nI dont want to get on her bad side.....");
+	}
+	if (counter == 7) // scene eight
+	{
+		m_HajimeText.setString("Shoot! the time! i should head to class.....");
+	}
 }
 void Game::movement() // a function to determain the movement of the characters
 {

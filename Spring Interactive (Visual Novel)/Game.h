@@ -46,6 +46,7 @@ private:
 	sf::Texture m_backGround1Texture; // texture for the background
 	sf::Sprite m_backGround1Sprite;  // sprite for the background
 
+
 	sf::Texture m_textBoxTexture; // texture for the text box 
 	sf::Sprite m_textBoxSprite; // sprite for the text box 
 
