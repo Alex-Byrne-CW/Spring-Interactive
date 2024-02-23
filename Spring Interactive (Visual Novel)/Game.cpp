@@ -90,6 +90,10 @@ void Game::processKeys(sf::Event t_event)
 	{
 		m_exitGame = true;
 	}
+	if (sf::Keyboard::Space == t_event.key.code) 
+	{
+		counterText();  // scene counter 
+	}
 }
 
 /// <summary>
@@ -102,6 +106,8 @@ void Game::update(sf::Time t_deltaTime)
 	{
 		m_window.close();
 	}
+	akari(); 
+	akariText(); 
 }
 
 /// <summary>
@@ -110,9 +116,32 @@ void Game::update(sf::Time t_deltaTime)
 void Game::render()
 {
 	m_window.clear(sf::Color::White);
-	m_window.draw(m_backGround1Sprite);
-	m_window.draw(m_textBoxSprite);
+	m_window.draw(m_backGround1Sprite); //background 
+	if (counter == 0) //first scene 
+	{
+		m_window.draw(m_AkariSprite); //character sprite 
+		m_window.draw(m_textBoxSprite); //text box 
+		m_window.draw(m_AkiraTalk); //diologue  
+		m_window.draw(m_akiraName); //name in text box 
+	}
 	m_window.display();
+}
+
+void Game::counterText()
+{
+	counter++;
+}
+
+void Game::akari()
+{
+}
+
+void Game::akariText()
+{
+	if (counter == 0) // scene one
+	{
+		m_AkiraTalk.setString("so your the new kid? \nvery well, all you have to know is follow the rules and dont cause trouble or else.......");
+	} 
 }
 
 /// <summary>

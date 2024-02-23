@@ -27,8 +27,9 @@ private:
 	void update(sf::Time t_deltaTime);
 	void render();
 	
-
-
+	void counterText();  // a function to increase a counter veriable which is used to go from scene to scene
+	void akari(); // a function to set up the sprite textures for the character akari 
+	void akariText(); // a function to set and change the dialogue of the character akari 
 
 
 
@@ -39,7 +40,7 @@ private:
 	sf::RenderWindow m_window; // main SFML window
 	sf::Font m_ArialBlackfont; // font used by message
 
-	sf::Text m_welcomeMessage; // text used for message on screen
+	int counter = 0;  
 	
 	sf::Texture m_backGround1Texture; // texture for the background
 	sf::Sprite m_backGround1Sprite;  // sprite for the background
