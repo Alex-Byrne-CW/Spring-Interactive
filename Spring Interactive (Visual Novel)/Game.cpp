@@ -16,7 +16,7 @@
 /// load and setup thne image
 /// </summary>
 Game::Game() :
-	m_window{ sf::VideoMode{ 800U, 600U, 32U }, "SFML Game" },
+	m_window{ sf::VideoMode{ 1915U, 1097U, 32U }, "SFML Game" },
 	m_exitGame{false} //when true game will exit
 {
 	setupFontAndText(); // load font 
@@ -110,8 +110,8 @@ void Game::update(sf::Time t_deltaTime)
 void Game::render()
 {
 	m_window.clear(sf::Color::White);
-	m_window.draw(m_welcomeMessage);
-	m_window.draw(m_logoSprite);
+	m_window.draw(m_backGround1Sprite);
+	m_window.draw(m_textBoxSprite);
 	m_window.display();
 }
 
@@ -140,11 +140,18 @@ void Game::setupFontAndText()
 /// </summary>
 void Game::setupSprite()
 {
-	if (!m_logoTexture.loadFromFile("ASSETS\\IMAGES\\SFML-LOGO.png"))
+	if (!m_backGround1Texture.loadFromFile("ASSETS\\IMAGES\\bg1.jpg")) // texture for background
 	{
-		// simple error message if previous call fails
-		std::cout << "problem loading logo" << std::endl;
+		std::cout << "problem loading background" << std::endl;
 	}
-	m_logoSprite.setTexture(m_logoTexture);
-	m_logoSprite.setPosition(300.0f, 180.0f);
+	m_backGround1Sprite.setTexture(m_backGround1Texture);
+	m_backGround1Sprite.setPosition(0.0f, 0.0f); 
+
+	if (!m_textBoxTexture.loadFromFile("ASSETS\\IMAGES\\textbox.png")) // texture for text box
+	{
+		std::cout << "problem loading textbox" << std::endl;
+	}
+	m_textBoxSprite.setTexture(m_textBoxTexture) ;
+	m_textBoxSprite.setPosition(0.0f, 800.0f); 
+	m_textBoxSprite.setColor(colour); 
 }

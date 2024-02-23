@@ -27,14 +27,29 @@ private:
 	void update(sf::Time t_deltaTime);
 	void render();
 	
+
+
+
+
+
+
 	void setupFontAndText();
 	void setupSprite();
 
 	sf::RenderWindow m_window; // main SFML window
 	sf::Font m_ArialBlackfont; // font used by message
+
 	sf::Text m_welcomeMessage; // text used for message on screen
-	sf::Texture m_logoTexture; // texture used for sfml logo
-	sf::Sprite m_logoSprite; // sprite used for sfml logo
+	
+	sf::Texture m_backGround1Texture; // texture for the background
+	sf::Sprite m_backGround1Sprite;  // sprite for the background
+
+	sf::Texture m_textBoxTexture; // texture for the text box 
+	sf::Sprite m_textBoxSprite; // sprite for the text box 
+
+	sf::Color colour{ 255u , 255u, 255u, 155u };  // used to make the text box see though and the characters see through when not talking
+
+
 	bool m_exitGame; // control exiting game
 
 };
