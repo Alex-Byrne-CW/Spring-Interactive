@@ -205,24 +205,39 @@ void Game::render()
 		m_window.draw(m_HajimeText);  // player diologue
 		m_window.draw(m_HajimeName);  // player name
 	}
-	if (counter == 8) // ninth scene
-	{
-		m_window.draw(m_loadingSprite); // loading screne 
-		m_window.draw(m_choice1A);
-		m_window.draw(m_choice1A_Boarder);
-		m_window.draw(m_choice1B);
-		m_window.draw(m_choice1B_Boarder);
-		m_window.draw(m_choiceText1A);
-		m_window.draw(m_choiceText1B);
-	}
-	if (counter == 9 && choice1A == true && choice1B == false) // tenth scene choice A
-	{
-		m_window.draw(m_classroomSprite); 
-	}
-	if (counter == 9 && choice1B == true && choice1A == false) // tenth scene choice B 
-	{
-		m_window.draw(m_librarySprite); 
-	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	//if (counter == 8) // ninth scene
+	//{
+	//	m_window.draw(m_loadingSprite); // loading screne 
+	//	m_window.draw(m_choice1A);
+	//	m_window.draw(m_choice1A_Boarder);
+	//	m_window.draw(m_choice1B);
+	//	m_window.draw(m_choice1B_Boarder);
+	//	m_window.draw(m_choiceText1A);
+	//	m_window.draw(m_choiceText1B);
+	//}
+	//if (counter == 9 && choice1A == true && choice1B == false) // tenth scene choice A
+	//{
+	//	m_window.draw(m_classroomSprite); 
+	//}
+	//if (counter == 9 && choice1B == true && choice1A == false) // tenth scene choice B 
+	//{
+	//	m_window.draw(m_librarySprite); 
+	//}
 	
 	m_window.display();
 }
@@ -288,7 +303,7 @@ void Game::HakimeText() // function for the player's dialogue text
 	}
 	if (counter == 7) // scene eight
 	{
-		m_HajimeText.setString("Shoot! the time! i should head to class.....");
+		m_HajimeText.setString("i still have time before class, what should i do?");
 	}
 }
 void Game::movement() // a function to determain the movement of the characters
