@@ -179,6 +179,9 @@ void Game::render()
 		m_window.draw(m_choiceText1A);  // choice box text A 
 		m_window.draw(m_choiceText1B);  // choice box text B 
 	}
+	m_window.draw(m_hideButtonBoarder); 
+	m_window.draw(m_hideButton);
+	m_window.draw(m_hideText);
 	m_window.display();
 }
 
@@ -440,6 +443,7 @@ void Game::setupSprite()
 {
 	choice(); 
 	setupBackgrounds(); 
+	hideTextButton(); 
 
 	if (!m_AkariTexture.loadFromFile("ASSETS\\IMAGES\\akari_N1.png")) // the nutraul_1 texture for the character Akari
 	{
@@ -535,4 +539,23 @@ void Game::choiceText() // a function to determine the text of the choices based
 		m_choiceText1A.setString("'go away nerd!'"); // setting up the text for the first option box 
 		m_choiceText1B.setString("'sure thing yuri, i can hang out!'");  // setting up the text for the second option box
 	}
+}
+
+void Game::hideTextButton()
+{
+	m_hideButton.setFillColor(sf::Color::Red);
+	m_hideButton.setRadius(30.0f);
+	m_hideButton.setOrigin(30.0f, 30.0f);
+	m_hideButton.setPosition(1860.0f, 795.0f);
+
+	m_hideButtonBoarder.setFillColor(sf::Color::Black); 
+	m_hideButtonBoarder.setRadius(35.0f);
+	m_hideButtonBoarder.setOrigin(35.0f, 35.0f);
+	m_hideButtonBoarder.setPosition(1860.0f, 795.0f); 
+
+	m_hideText.setString("Hide"); 
+	m_hideText.setFont(m_ArialBlackfont); // set up for the name in the dialogue box 
+	m_hideText.setPosition(1837.0f, 782.0f);
+	m_hideText.setCharacterSize(20U); 
+	m_hideText.setOutlineColor(sf::Color::White);
 }

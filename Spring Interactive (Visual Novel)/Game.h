@@ -48,6 +48,8 @@ private:
 	void choice(); // setting up choice boxes
 	void choiceText(); // a function to determine the text of the choices based of scene number 
 
+	void hideTextButton();
+
 	sf::RenderWindow m_window; // main SFML window
 	sf::Font m_ArialBlackfont; // font used by message
 
@@ -98,6 +100,11 @@ private:
 	sf::RectangleShape m_choice1B; // choice block B
 	sf::RectangleShape m_choice1B_Boarder; // choice boarder B
 	sf::Text m_choiceText1B;  // choice text B
+
+	sf::CircleShape m_hideButton;
+	sf::CircleShape m_hideButtonBoarder; 
+	sf::Text m_hideText;
+	bool hide = { false };
 
 	sf::Vector2f m_mouseEnd; // to find where the mouse is
 	bool choice1A = { false }; // the cheaker for the choice A
