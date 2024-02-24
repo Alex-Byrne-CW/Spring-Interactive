@@ -48,7 +48,7 @@ private:
 	void choice(); // setting up choice boxes
 	void choiceText(); // a function to determine the text of the choices based of scene number 
 
-	void hideTextButton();
+	void hideTextButton(); // a function to set up the hide button and its text 
 
 	sf::RenderWindow m_window; // main SFML window
 	sf::Font m_ArialBlackfont; // font used by message
@@ -70,8 +70,8 @@ private:
 	sf::Sprite m_AkariSprite; // the sprite for the character akari 
 	bool akariSprite = { true };
 
-	sf::Vector2f m_AkariLocation = { 0.0f , -250.0f }; // used to make the text box see though and the characters see through when not talking
-	sf::Vector2f m_AkariVilocity = { 0.0f, 0.0f }; // used to set the characters textures to normal
+	sf::Vector2f m_AkariLocation = { 0.0f , -250.0f }; // akari location
+	sf::Vector2f m_AkariVilocity = { 0.0f, 0.0f }; // sksri vilosity
 
 	sf::Texture m_yuriTextureNutrual1; // the first nutural texture for the yuri character
 	sf::Texture m_yuriTextureNutrual2; // the second nutural texture for the yuri character
@@ -81,17 +81,17 @@ private:
 	sf::Sprite m_yuriSprite; // the sprite for the yri character
 	bool yuriSprite = { true };
 
-	sf::Vector2f m_yuriLocation = { 1600.0f, -250.0f};
-	sf::Vector2f m_yuriVilocity = { 0.0f , 0.0f };
+	sf::Vector2f m_yuriLocation = { 1600.0f, -250.0f}; // yuri location
+	sf::Vector2f m_yuriVilocity = { 0.0f , 0.0f }; // yuri vilosity for movements
 
-	sf::Text m_dialogueName; // used to store the players name in the text box 
-	sf::Text m_dialogueText; // userd to store the players dialogue text 
+	sf::Text m_dialogueName; // used to store the  name in the text box 
+	sf::Text m_dialogueText; // used to store the  dialogue text 
 
 
 	sf::Color colour{ 255u , 255u, 255u, 155u };  // used to make the text box see though and the characters see through when not talking
 	sf::Color Default{ 255u , 255u, 255u, 255u }; // used to set the characters textures to normal 
 
-	sf::Vector2f Speed = { -0.50f , 0.00f }; 
+	sf::Vector2f Speed = { -0.50f , 0.00f }; // a speed veriable used to make the sprites move over time
 
 	sf::RectangleShape m_choice1A; // choice block A
 	sf::RectangleShape m_choice1A_Boarder; // choice boarder A
@@ -101,10 +101,10 @@ private:
 	sf::RectangleShape m_choice1B_Boarder; // choice boarder B
 	sf::Text m_choiceText1B;  // choice text B
 
-	sf::CircleShape m_hideButton;
-	sf::CircleShape m_hideButtonBoarder; 
-	sf::Text m_hideText;
-	bool hide = { false };
+	sf::CircleShape m_hideButton; // hide button
+	sf::CircleShape m_hideButtonBoarder; // hide button boarder
+	sf::Text m_hideText; // hide button text
+	bool hide = { false }; // the cheaker for if the hide button has been pressed
 
 	sf::Vector2f m_mouseEnd; // to find where the mouse is
 	bool choice1A = { false }; // the cheaker for the choice A
@@ -124,9 +124,6 @@ private:
 
 	sf::SoundBuffer m_clickSound; // click sound effect
 	sf::Sound m_click;
-
-	sf::SoundBuffer m_cryingSound; // crying sound efect
-	sf::Sound m_crying;
 
 	bool m_exitGame; // control exiting game
 
