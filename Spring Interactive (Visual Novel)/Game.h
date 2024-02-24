@@ -125,6 +125,9 @@ private:
 	sf::SoundBuffer m_clickSound; // click sound effect
 	sf::Sound m_click;
 
+	sf::SoundBuffer m_giggleSound; // giggle sound effects
+	sf::Sound m_giggle; 
+
 	bool m_exitGame; // control exiting game
 
 };

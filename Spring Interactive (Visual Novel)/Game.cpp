@@ -262,7 +262,7 @@ void Game::yuri()
 	{
 		m_yuriSprite.setTexture(m_yuriTextureNutrual2);
 	}
-	else if (counter == 11 || counter == 12 && choice1A == true) // 12th & 13th scene A
+	else if (counter == 11 || counter == 12 && choice1A == true || counter == 12 && choice1B == true) // 12th scene & 13th scene A & 13th scene B 
 	{
 		m_yuriSprite.setColor(colour);
 	}
@@ -270,6 +270,19 @@ void Game::yuri()
 	{
 		m_yuriSprite.setColor(Default);
 		m_yuriSprite.setTexture(m_yuriTextureSad1);
+	}
+	else if (counter == 13 && choice1B == true) // 14th scene B
+	{
+		m_yuriSprite.setColor(Default);
+		m_yuriSprite.setTexture(m_yuriTextureHappy1);
+	}
+	else if (counter == 14 && choice1B == true) // 15th scene B
+	{
+		m_yuriSprite.setTexture(m_yuriTextureHappy2);
+	}
+	else if (counter == 15 && choice1B == true) // 16th scene B
+	{
+		m_yuriSprite.setColor(colour); 
 	}
 }
 
@@ -291,12 +304,26 @@ void Game::yuriText()
 	{
 		m_dialogueText.setString("t-that you havent spokent to anyone yet. \nso i was wondering if you w-wanted to hang out?");
 	}
-	else if (counter == 13 && choice1A == true)
+	else if (counter == 13 && choice1A == true) // 14th scene A
 	{
 		m_dialogueText.setString("o-oh.... \ns-sorry for annoying you, i'll b-be going t-then.");
 		m_dialogueName.setString("Yuri");
 		m_dialogueName.setFillColor(sf::Color::Magenta); 
 		m_dialogueText.setFillColor(sf::Color::Magenta);
+	}
+	else if (counter == 13 && choice1B == true) // 14th scene B
+	{
+		m_dialogueText.setString("really!? you want to hang out!");
+		m_dialogueName.setString("yuri");
+		m_dialogueName.setFillColor(sf::Color::Magenta);
+		m_dialogueText.setFillColor(sf::Color::Magenta);
+
+		m_giggle.play();  
+	}
+	else if (counter == 14 && choice1B == true) // 15th scene B
+	{
+		m_dialogueText.setString("we are going to have so much fun, i promise!");
+		m_dialogueName.setString("yuri");
 	}
 }
 
@@ -335,10 +362,24 @@ void Game::HakimeText() // function for the player's dialogue text
 	{
 		m_dialogueText.setString("wow, i suck.........");
 		m_dialogueName.setString("Hakime");
-		m_dialogueName.setFillColor(sf::Color::Yellow); 
+		m_dialogueName.setFillColor(sf::Color::Yellow);
 		m_dialogueText.setFillColor(sf::Color::Yellow);
 
 		yuriSprite = false;
+	}
+	else if (counter == 12 && choice1B == true) // 13th scene B
+	{
+		m_dialogueText.setString("sure thing yuir! let's hang out!");
+		m_dialogueName.setString("Hakime");
+		m_dialogueName.setFillColor(sf::Color::Yellow);
+		m_dialogueText.setFillColor(sf::Color::Yellow);
+	}
+	else if (counter == 15 && choice1B == true) // 16th scene B
+	{
+		m_dialogueText.setString("i can't wait yuri!");  
+		m_dialogueName.setString("Hakime");  
+		m_dialogueName.setFillColor(sf::Color::Yellow); 
+		m_dialogueText.setFillColor(sf::Color::Yellow);
 	}
 }
 
@@ -360,7 +401,7 @@ void Game::movement() // a function to determain the movement of the characters
 		m_yuriLocation += m_yuriVilocity; // adding the distandce to the sprite location
 		m_yuriSprite.setPosition(m_yuriLocation); // setting the new location
 	} 
-	else if (counter == 14 || choice1A == true) // scene 15
+	else if (counter == 14 || choice1A == true) // scene 15 A
 	{
 		m_dialogueText.setString(""); //clearing text during movement
 		m_dialogueName.setString(""); //clearing text during movement
@@ -414,7 +455,7 @@ void Game::setupSound() // a function to load and play audio files
 		std::cout << "problem with sound" << std::endl;
 	}
 	m_theme.setBuffer(m_themeMusic);
-	m_theme.setVolume(10.f); 
+	m_theme.setVolume(5.0f); 
 	m_theme.setLoop(true);
 	m_theme.play();
 
@@ -443,6 +484,13 @@ void Game::setupSound() // a function to load and play audio files
 	}
 	m_click.setBuffer(m_clickSound); 
 	m_click.setVolume(25.0f); 
+
+	if (!m_giggleSound.loadFromFile("ASSETS\\AUDIO\\giggle.flac"))
+	{
+		std::cout << "problem with sound" << std::endl;
+	}
+	m_giggle.setBuffer(m_giggleSound); 
+	m_giggle.setVolume(100.0f); 
 }
 
 /// <summary>
@@ -481,6 +529,14 @@ void Game::setupSprite()
 	if (!m_yuriTextureSad1.loadFromFile("ASSETS\\IMAGES\\yuri_S1.png")) // the sad_1 texture for yuri
 	{
 		std::cout << "problem loading yuri nutrual2" << std::endl;
+	}
+	if (!m_yuriTextureHappy1.loadFromFile("ASSETS\\IMAGES\\yuri_H1.png"))
+	{
+		std::cout << "problem loading yuri Happy1" << std::endl;
+	}
+	if (!m_yuriTextureHappy2.loadFromFile("ASSETS\\IMAGES\\yuri_H2.png"))
+	{
+		std::cout << "problem loading yuri Happy2" << std::endl;
 	}
 	m_yuriSprite.setTexture(m_yuriTextureNutrual1);
 	m_yuriSprite.setPosition(1600.0f, -250.0f);
