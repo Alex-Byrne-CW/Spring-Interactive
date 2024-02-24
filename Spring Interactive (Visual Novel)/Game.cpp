@@ -144,17 +144,10 @@ void Game::update(sf::Time t_deltaTime)
 	akariText();
 	yuriText(); 
 	HakimeText();
-	if (counter == 5 && m_AkariLocation.x > -670.0f)
+	choiceText(); 
+	if (counter == 5 && m_AkariLocation.x > -670.0f || counter == 8 && m_yuriLocation.x > 750.0f || counter == 14 && choice1A == true && m_yuriLocation.x > -670.0f)
 	{
 		movement(); // akari scene 5 movement
-	}
-	else if (counter == 8 && m_yuriLocation.x > 750.0f)
-	{
-		movement(); // yuri scene 8 movement
-	}
-	else if (counter == 14 && choice1A == true && m_yuriLocation.x > -670.0f)
-	{
-		movement();
 	}
 }
 
@@ -164,123 +157,27 @@ void Game::update(sf::Time t_deltaTime)
 void Game::render()
 {
 	m_window.clear(sf::Color::White);
-	m_window.draw(m_backGround1Sprite); //background 
-	if (counter == 0) //first scene 
+	m_window.draw(m_backGroundSprite); //background 
+	if (akariSprite == true)
 	{
-		m_window.draw(m_AkariSprite); //character sprite 
-		m_window.draw(m_textBoxSprite); //text box 
-		m_window.draw(m_AkiraTalk); //diologue  
-		m_window.draw(m_akiraName); //name in text box 
+		m_window.draw(m_AkariSprite); //character sprite  
 	}
-	else if (counter == 1) // second scene
+	if (yuriSprite == true)
 	{
-		m_window.draw(m_AkariSprite); //character sprite
-		m_window.draw(m_textBoxSprite); //text box
-		m_window.draw(m_AkiraTalk); //diologue 
-		m_window.draw(m_akiraName); //name in text box
+		m_window.draw(m_yuriSprite); //character sprite  
 	}
-	else if (counter == 2) // third scene
+	m_window.draw(m_textBoxSprite); //text box 
+	m_window.draw(m_dialogueName); // dialogue box name
+	m_window.draw(m_dialogueText); // dialogue box text
+	if (counter == 11)  //12th scene 
 	{
-		m_window.draw(m_AkariSprite);  //character sprite
-		m_window.draw(m_textBoxSprite); //text box
-		m_window.draw(m_HajimeText); // player diologue
-		m_window.draw(m_HajimeName); // player name
+		m_window.draw(m_choice1A);  // choice box A 
+		m_window.draw(m_choice1A_Boarder); // choice box boarder A 
+		m_window.draw(m_choice1B); // cxhoice box B 
+		m_window.draw(m_choice1B_Boarder); // choicer box boarder B  
+		m_window.draw(m_choiceText1A);  // choice box text A 
+		m_window.draw(m_choiceText1B);  // choice box text B 
 	}
-	else if (counter == 3) // fourth scene
-	{
-		m_window.draw(m_AkariSprite); //character sprite
-		m_window.draw(m_textBoxSprite); //text box
-		m_window.draw(m_AkiraTalk);
-		m_window.draw(m_akiraName); // character name
-	}
-	else if (counter == 4) // fifth scene
-	{
-		m_window.draw(m_AkariSprite); //character sprite 
-		m_window.draw(m_textBoxSprite); //text box 
-		m_window.draw(m_AkiraTalk); // character diologue 
-		m_window.draw(m_akiraName); // character name 
-	} 
-	else if (counter == 5) // sixth scene
-	{
-		m_window.draw(m_AkariSprite); // character sprite
-		m_window.draw(m_textBoxSprite); // text box
-	}
-	else if (counter == 6) // seventh scene
-	{
-		m_window.draw(m_textBoxSprite); //text box  
-		m_window.draw(m_HajimeText); // player diologue
-		m_window.draw(m_HajimeName); // player name
-	}
-	else if (counter == 7) // eighth scene
-	{
-		m_window.draw(m_yuriSprite); //character sprite
-		m_window.draw(m_textBoxSprite);  //text box  
-		m_window.draw(m_HajimeText);  // player diologue
-		m_window.draw(m_HajimeName);  // player name
-	}
-	else if (counter == 8) // ninth scene
-	{
-		m_window.draw(m_yuriSprite); //character sprite
-		m_window.draw(m_textBoxSprite); // text box
-	}
-	else if (counter == 9) // tenth scene
-	{
-		m_window.draw(m_yuriSprite);  //character sprite
-		m_window.draw(m_textBoxSprite); //text box
-		m_window.draw(m_yuriName); // dialogue name
-		m_window.draw(m_yuriTalk); // dialogue text
-	}
-	else if (counter == 10) // eleventh scene
-	{
-		m_window.draw(m_yuriSprite); //character sprite
-		m_window.draw(m_textBoxSprite);  //text box
-		m_window.draw(m_yuriName);  // dialogue name
-		m_window.draw(m_yuriTalk);  // dialogue text
-	}
-	else if (counter == 11)  //12th scene
-	{
-		m_window.draw(m_yuriSprite); //character sprite
-		m_window.draw(m_textBoxSprite);  //text box
-		m_window.draw(m_yuriName);  // dialogue name
-		m_window.draw(m_yuriTalk);  // dialogue text
-		m_window.draw(m_choice1A);  // choice box A
-		m_window.draw(m_choice1A_Boarder); // choice box boarder A
-		m_window.draw(m_choice1B); // cxhoice box B
-		m_window.draw(m_choice1B_Boarder); // choicer box boarder B 
-		m_window.draw(m_choiceText1A);  // choice box text A
-		m_window.draw(m_choiceText1B);  // choice box text B
-	}
-	else if (counter == 12 && choice1A == true && choice1B == false) // 13 scene choice A
-	{
-		m_window.draw(m_yuriSprite); //character sprite 
-		m_window.draw(m_textBoxSprite);  //text box 
-		m_window.draw(m_HajimeText);  // player diologue
-		m_window.draw(m_HajimeName);  // player name
-	}
-	else if (counter == 13 && choice1A == true)
-	{
-		m_window.draw(m_yuriSprite); //character sprite 
-		m_window.draw(m_textBoxSprite);  //text box 
-		m_window.draw(m_yuriName);  // dialogue name
-		m_window.draw(m_yuriTalk);  // dialogue text
-
-	}
-	else if (counter == 14 && choice1A == true)
-	{
-		m_window.draw(m_yuriSprite); //character sprite 
-		m_window.draw(m_textBoxSprite); //text box 
-	}
-	else if (counter == 15 && choice1A == true)
-	{ 
-		m_window.draw(m_textBoxSprite); //text box 
-		m_window.draw(m_HajimeText);
-		m_window.draw(m_HajimeName);
-	}
-	else if (counter == 12 && choice1B == true && choice1A == false) // 13 scene choice B 
-	{
-		m_window.draw(m_librarySprite); 
-	}
-	
 	m_window.display();
 }
 
@@ -314,21 +211,25 @@ void Game::akariText() // a function for the dialogue text for the character aka
 {
 	if (counter == 0) // scene one
 	{
-		m_AkiraTalk.setString("so your the new kid? \nvery well, all you have to know is follow the rules and dont cause trouble or else.......");
+		m_dialogueText.setString("so your the new kid? \nvery well, all you have to know is follow the rules and dont cause trouble or else.......");
+		m_dialogueName.setString("Akira");
+		m_dialogueName.setFillColor(sf::Color::White);
 		m_sigh.play(); // play audio file
 	} 
 	else if (counter == 1) // scene two 
 	{ 
-		m_AkiraTalk.setString("Do i make myself clear?"); 
+		m_dialogueText.setString("Do i make myself clear?");
 	} 
 	else if (counter == 3) // scene four
 	{
-		m_AkiraTalk.setString("Great! then we shouldn't have a problem"); 
-		
+		m_dialogueText.setString("Great! then we shouldn't have a problem");
+		m_dialogueName.setString("Akira");
+		m_dialogueName.setFillColor(sf::Color::White);	
+		m_dialogueText.setFillColor(sf::Color::White); 
 	}
 	else if (counter == 4) // scene five
 	{
-		m_AkiraTalk.setString("Well i have to get going New kid. \nthe student council work never rests you know!");
+		m_dialogueText.setString("Well i have to get going New kid. \nthe student council work never rests you know!");
 	}
 }
 
@@ -338,11 +239,11 @@ void Game::yuri()
 	{
 		m_yuriSprite.setTexture(m_yuriTextureNutrual2);
 	}
-	else if (counter == 12 && choice1A == true)
+	else if (counter == 11 || counter == 12 && choice1A == true) // 12th & 13th scene A
 	{
 		m_yuriSprite.setColor(colour);
 	}
-	else if (counter == 13 && choice1A == true)
+	else if (counter == 13 && choice1A == true) // 14th scene A
 	{
 		m_yuriSprite.setColor(Default);
 		m_yuriSprite.setTexture(m_yuriTextureSad1);
@@ -351,22 +252,30 @@ void Game::yuri()
 
 void Game::yuriText()
 {
-	if (counter == 8)
+	if (counter == 8) // 9th scene
 	{
 		m_hi.play();  
 	}
 	else if (counter == 9) //10th scene
 	{
-		m_yuriTalk.setString("h-hello, i'm Yuri. your the new kid right? \nI-I couldn't help but notice.");
+		m_dialogueText.setString("h-hello, i'm Yuri. your the new kid right? \nI-I couldn't help but notice.");
+		m_dialogueName.setString("Yuri");
+		m_dialogueName.setFillColor(sf::Color::Magenta);
+		m_dialogueText.setFillColor(sf::Color::Magenta); 
+
 	}
 	else if (counter == 10) // 11th scene
 	{
-		m_yuriTalk.setString("t-that you havent spokent to anyone yet. \nso i was wondering if you w-wanted to hang out?");
+		m_dialogueText.setString("t-that you havent spokent to anyone yet. \nso i was wondering if you w-wanted to hang out?");
 	}
 	else if (counter == 13 && choice1A == true)
 	{
-		m_yuriTalk.setString("o-oh.... \ns-sorry for annoying you, i'll b-be going t-then.");
-		m_crying.play(); 
+		m_dialogueText.setString("o-oh.... \ns-sorry for annoying you, i'll b-be going t-then.");
+		m_dialogueName.setString("Yuri");
+		m_dialogueName.setFillColor(sf::Color::Magenta); 
+		m_dialogueText.setFillColor(sf::Color::Magenta);
+
+		m_crying.play();  
 	}
 }
 
@@ -374,42 +283,67 @@ void Game::HakimeText() // function for the player's dialogue text
 {
 	if (counter == 2) // scene three
 	{
-		m_HajimeText.setString("U-Understood ma'am"); 
+		m_dialogueText.setString("U-Understood ma'am");
+		m_dialogueName.setString("Hakime");
+		m_dialogueName.setFillColor(sf::Color::Yellow);
+		m_dialogueText.setFillColor(sf::Color::Yellow);
+
 		m_chuckle.play(); 
 	} 
 	else if (counter == 6) // scene seven
 	{
-		m_HajimeText.setString("so thats the student council president? \nI dont want to get on her bad side.....");
+		m_dialogueText.setString("so thats the student council president? \nI dont want to get on her bad side.....");
+		m_dialogueName.setString("Hakime");
+		m_dialogueName.setFillColor(sf::Color::Yellow);
+		m_dialogueText.setFillColor(sf::Color::Yellow);
+
+		akariSprite = false; 
 	}
 	else if (counter == 7) // scene eight
 	{
-		m_HajimeText.setString("i still have time before class, what should i do?");
+		m_dialogueText.setString("i still have time before class, what should i do?");
 	}
-	else if (counter == 12 && choice1A == true)
+	else if (counter == 12 && choice1A == true) // 13th scene A
 	{
-		m_HajimeText.setString("no way nerd! go annoy someone else!");
+		m_dialogueText.setString("no way nerd! go annoy someone else!");
+		m_dialogueName.setString("Hakime");
+		m_dialogueName.setFillColor(sf::Color::Yellow); 
+		m_dialogueText.setFillColor(sf::Color::Yellow);
 	}
-	else if (counter == 15 && choice1A == true)
+	else if (counter == 15 && choice1A == true)  // 16th scene A
 	{
-		m_HajimeText.setString("wow, i suck.........");
+		m_dialogueText.setString("wow, i suck.........");
+		m_dialogueName.setString("Hakime");
+		m_dialogueName.setFillColor(sf::Color::Yellow); 
+		m_dialogueText.setFillColor(sf::Color::Yellow);
+
+		yuriSprite = false;
+		m_crying.stop(); 
 	}
 }
+
 void Game::movement() // a function to determain the movement of the characters
 {
 	if (counter == 5) // 6th scene
 	{
+		m_dialogueText.setString("");
+		m_dialogueName.setString("");
 		m_AkariVilocity += Speed;
 		m_AkariLocation += m_AkariVilocity;
 		m_AkariSprite.setPosition(m_AkariLocation);
 	}
 	else if (counter == 8) // 7th scene
 	{
+		m_dialogueText.setString(""); 
+		m_dialogueName.setString(""); 
 		m_yuriVilocity += Speed;
 		m_yuriLocation += m_yuriVilocity;
 		m_yuriSprite.setPosition(m_yuriLocation);
 	}
-	else if (counter == 14 && choice1A == true)
+	else if (counter == 14 || choice1A == true)
 	{
+		m_dialogueText.setString(""); 
+		m_dialogueName.setString(""); 
 		m_yuriVilocity += Speed * 1.50f;
 		m_yuriLocation += m_yuriVilocity;
 		m_yuriSprite.setPosition(m_yuriLocation);
@@ -426,53 +360,17 @@ void Game::setupFontAndText()
 	{
 		std::cout << "problem loading arial black font" << std::endl;
 	}
-	m_akiraName.setFont(m_ArialBlackfont);
-	m_akiraName.setString("Akira"); // set up fro character Akira name
-	m_akiraName.setStyle(sf::Text::Italic);
-	m_akiraName.setPosition(95.0f, 800.0f);
-	m_akiraName.setCharacterSize(40U);
-	m_akiraName.setOutlineColor(sf::Color::Black); 
-	m_akiraName.setFillColor(sf::Color::White); 
-	m_akiraName.setOutlineThickness(1.0f); 
+	m_dialogueName.setFont(m_ArialBlackfont); // set up for the name in the dialogue box
+	m_dialogueName.setPosition(95.0f, 800.0f);
+	m_dialogueName.setCharacterSize(40U);
+	m_dialogueName.setOutlineColor(sf::Color::Black);
+	m_dialogueName.setOutlineThickness(1.0f);
 
-	m_AkiraTalk.setCharacterSize(40U);   // set up dialogue for the character Akira
-	m_AkiraTalk.setPosition(40.0f, 880.0f);
-	m_AkiraTalk.setFillColor(sf::Color::White);
-	m_AkiraTalk.setOutlineColor(sf::Color::Black);
-	m_AkiraTalk.setOutlineThickness(1.0f);
-	m_AkiraTalk.setFont(m_ArialBlackfont); 
-
-	m_yuriName.setFont(m_ArialBlackfont);
-	m_yuriName.setString("yuri"); // set up fro character yuri name
-	m_yuriName.setStyle(sf::Text::Italic);
-	m_yuriName.setPosition(110.0f, 800.0f);
-	m_yuriName.setCharacterSize(40U);
-	m_yuriName.setOutlineColor(Purple);
-	m_yuriName.setFillColor(Purple);
-	m_yuriName.setOutlineThickness(1.0f); 
-
-	m_yuriTalk.setCharacterSize(40U);   // set up dialogue for the character Akira
-	m_yuriTalk.setPosition(40.0f, 880.0f);
-	m_yuriTalk.setFillColor(Purple); 
-	m_yuriTalk.setOutlineColor(Purple); 
-	m_yuriTalk.setOutlineThickness(1.0f);
-	m_yuriTalk.setFont(m_ArialBlackfont); 
-
-	m_HajimeName.setFont(m_ArialBlackfont); 
-	m_HajimeName.setString("Hajime"); // set up for player name 
-	m_HajimeName.setStyle(sf::Text::Italic); 
-	m_HajimeName.setPosition(80.0f, 800.0f); 
-	m_HajimeName.setCharacterSize(40U); 
-	m_HajimeName.setOutlineColor(sf::Color::Black); 
-	m_HajimeName.setFillColor(sf::Color::Yellow); 
-	m_HajimeName.setOutlineThickness(1.0f); 
-
-	m_HajimeText.setCharacterSize(40U);  // set up for player dialogue 
-	m_HajimeText.setPosition(40.0f, 880.0f); 
-	m_HajimeText.setFillColor(sf::Color::Yellow); 
-	m_HajimeText.setOutlineColor(sf::Color::Black); 
-	m_HajimeText.setOutlineThickness(1.0f); 
-	m_HajimeText.setFont(m_ArialBlackfont);  
+	m_dialogueText.setFont(m_ArialBlackfont);  
+	m_dialogueText.setPosition(40.0f, 880.0f);  
+	m_dialogueText.setCharacterSize(40U);   // set up for the text in the dialogue box
+	m_dialogueText.setOutlineColor(sf::Color::Black);
+	m_dialogueText.setOutlineThickness(1.0f);
 
 	m_choiceText1A.setCharacterSize(40U);  // set up for player dialogue
 	m_choiceText1A.setPosition(800.0f, 525.0f);
@@ -573,43 +471,16 @@ void Game::setupSprite()
 	m_yuriSprite.setTexture(m_yuriTextureNutrual1);
 	m_yuriSprite.setPosition(1600.0f, -250.0f);
 	m_yuriSprite.setScale(1.5f, 1.5f);
-
-
-
-
-
 }
 
 void Game::setupBackgrounds()
 {
-	if (!m_backGround1Texture.loadFromFile("ASSETS\\IMAGES\\bg1.jpg")) // texture for background 
+	if (!m_backGroundTexture.loadFromFile("ASSETS\\IMAGES\\bg1.jpg")) // texture for background 
 	{
 		std::cout << "problem loading background" << std::endl; 
 	}
-	m_backGround1Sprite.setTexture(m_backGround1Texture);  
-	m_backGround1Sprite.setPosition(0.0f, 0.0f);  
-
-	if (!m_classroomTexture.loadFromFile("ASSETS\\IMAGES\\class.png")) // texture for background 
-	{
-		std::cout << "problem loading background" << std::endl; 
-	}
-	m_classroomSprite.setTexture(m_classroomTexture); 
-	m_classroomSprite.setPosition(0.0f, 0.0f); 
-
-	if (!m_libraryTexture.loadFromFile("ASSETS\\IMAGES\\library.png")) // texture for background  
-	{
-		std::cout << "problem loading background" << std::endl; 
-	}
-	m_librarySprite.setTexture(m_libraryTexture); 
-	m_librarySprite.setPosition(0.0f, 0.0f); 
-
-
-	if (!m_loadingTexture.loadFromFile("ASSETS\\IMAGES\\loading.jpg")) // texture for loading screne  
-	{
-		std::cout << "problem with loading" << std::endl; 
-	}
-	m_loadingSprite.setTexture(m_loadingTexture); 
-	m_loadingSprite.setPosition(0.0f, 0.0f); 
+	m_backGroundSprite.setTexture(m_backGroundTexture);  
+	m_backGroundSprite.setPosition(0.0f, 0.0f);  
 
 	if (!m_textBoxTexture.loadFromFile("ASSETS\\IMAGES\\textbox.png")) // texture for text box 
 	{
@@ -623,30 +494,35 @@ void Game::setupBackgrounds()
 void Game::choice() // a function to create the choice boxes for the player to select
 {
 	//setting up the first choice option box
-	m_choice1A.setFillColor(sf::Color::White); 
-	m_choice1A.setSize(sf::Vector2f{ 700.0f, 80.0f }); 
-	m_choice1A.setOrigin(350.0f, 40.0f); 
-	m_choice1A.setPosition(957.5f, 550.0f); 
+	m_choice1A.setFillColor(sf::Color::White);
+	m_choice1A.setSize(sf::Vector2f{ 700.0f, 80.0f });
+	m_choice1A.setOrigin(350.0f, 40.0f);
+	m_choice1A.setPosition(957.5f, 550.0f);
 
 	//setting up the first choice option box boarder
-	m_choice1A_Boarder.setFillColor(sf::Color::Black); 
-	m_choice1A_Boarder.setSize(sf::Vector2f{ 680.0f, 60.0f }); 
-	m_choice1A_Boarder.setOrigin(340.0f, 30.0f); 
-	m_choice1A_Boarder.setPosition(957.5f, 550.0f); 
-
-	m_choiceText1A.setString("'go away nerd!'"); // setting up the text for the first option box 
+	m_choice1A_Boarder.setFillColor(sf::Color::Black);
+	m_choice1A_Boarder.setSize(sf::Vector2f{ 680.0f, 60.0f });
+	m_choice1A_Boarder.setOrigin(340.0f, 30.0f);
+	m_choice1A_Boarder.setPosition(957.5f, 550.0f);
 
 	//setting up the second choice option box
-	m_choice1B.setFillColor(sf::Color::White); 
-	m_choice1B.setSize(sf::Vector2f{ 700.0f, 80.0f }); 
-	m_choice1B.setOrigin(350.0f, 40.0f); 
-	m_choice1B.setPosition(957.5f, 350.0f); 
+	m_choice1B.setFillColor(sf::Color::White);
+	m_choice1B.setSize(sf::Vector2f{ 700.0f, 80.0f });
+	m_choice1B.setOrigin(350.0f, 40.0f);
+	m_choice1B.setPosition(957.5f, 350.0f);
 
 	//setting up the second choice option box boarder
-	m_choice1B_Boarder.setFillColor(sf::Color::Black); 
-	m_choice1B_Boarder.setSize(sf::Vector2f{ 680.0f, 60.0f }); 
-	m_choice1B_Boarder.setOrigin(340.0f, 30.0f); 
-	m_choice1B_Boarder.setPosition(957.5f, 350.0f); 
+	m_choice1B_Boarder.setFillColor(sf::Color::Black);
+	m_choice1B_Boarder.setSize(sf::Vector2f{ 680.0f, 60.0f });
+	m_choice1B_Boarder.setOrigin(340.0f, 30.0f);
+	m_choice1B_Boarder.setPosition(957.5f, 350.0f);
+}
 
-	m_choiceText1B.setString("'sure thing yuri, i can hang out!'");  // setting up the text for the second option box
+void Game::choiceText() // a function to determine the text of the choices based of scene number
+{
+	if (counter == 11)
+	{
+		m_choiceText1A.setString("'go away nerd!'"); // setting up the text for the first option box 
+		m_choiceText1B.setString("'sure thing yuri, i can hang out!'");  // setting up the text for the second option box
+	}
 }
