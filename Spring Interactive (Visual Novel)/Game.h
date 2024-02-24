@@ -59,6 +59,9 @@ private:
 	sf::Texture m_textBoxTexture; // texture for the text box 
 	sf::Sprite m_textBoxSprite; // sprite for the text box 
 
+	sf::Texture m_textBoxCornerTexture; // texture for the text box corner
+	sf::Sprite m_textBoxCornerSprite; // sprite for the text box corner
+
 	sf::Texture m_AkariTexture; // the nutrual texture for the chararacter akari 
 	sf::Texture m_AkariTextureSerious; // the serious texture for the character akari 
 	sf::Texture m_AkariTextureHappy; // the happy texture for the character akari 

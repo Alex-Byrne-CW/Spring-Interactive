@@ -166,6 +166,7 @@ void Game::render()
 	{
 		m_window.draw(m_yuriSprite); //character sprite  
 	}
+	m_window.draw(m_textBoxCornerSprite); 
 	m_window.draw(m_textBoxSprite); //text box 
 	m_window.draw(m_dialogueName); // dialogue box name
 	m_window.draw(m_dialogueText); // dialogue box text
@@ -489,6 +490,15 @@ void Game::setupBackgrounds()
 	m_textBoxSprite.setTexture(m_textBoxTexture); 
 	m_textBoxSprite.setPosition(0.0f, 800.0f); 
 	m_textBoxSprite.setColor(colour); 
+
+	if (!m_textBoxCornerTexture.loadFromFile("ASSETS\\IMAGES\\textboxCorner.png")) // texture for text box 
+	{
+		std::cout << "problem loading textbox corner" << std::endl;
+	}
+	m_textBoxCornerSprite.setTexture(m_textBoxCornerTexture);
+	m_textBoxCornerSprite.setPosition(1595.0f, 550.0f);
+	m_textBoxCornerSprite.setColor(colour);
+	m_textBoxCornerSprite.setScale(2.0f, 2.0f); 
 }
 
 void Game::choice() // a function to create the choice boxes for the player to select
