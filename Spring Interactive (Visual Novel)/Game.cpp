@@ -118,11 +118,13 @@ void Game::processMouse(sf::Event t_event)
 		{
 			counter++;
 			choice1A = true;
+			m_click.play(); 
 		}
-		if (m_mouseEnd.x > choiceCornerB1.x && m_mouseEnd.x < choiceCornerB2.x && m_mouseEnd.y > choiceCornerB1.y && m_mouseEnd.y < choiceCornerB2.y) 
+		else if (m_mouseEnd.x > choiceCornerB1.x && m_mouseEnd.x < choiceCornerB2.x && m_mouseEnd.y > choiceCornerB1.y && m_mouseEnd.y < choiceCornerB2.y) 
 		{ 
 			counter++; 
-			choice1B = true; 
+			choice1B = true;
+			m_click.play(); 
 		}
 	}
 }
@@ -142,13 +144,17 @@ void Game::update(sf::Time t_deltaTime)
 	akariText();
 	yuriText(); 
 	HakimeText();
-	if (counter == 5 && m_AkariLocation.x > -660.0f)
+	if (counter == 5 && m_AkariLocation.x > -670.0f)
 	{
 		movement(); // akari scene 5 movement
 	}
-	if (counter == 8 && m_yuriLocation.x > 750.0f)
+	else if (counter == 8 && m_yuriLocation.x > 750.0f)
 	{
 		movement(); // yuri scene 8 movement
+	}
+	else if (counter == 14 && choice1A == true && m_yuriLocation.x > -670.0f)
+	{
+		movement();
 	}
 }
 
@@ -166,72 +172,72 @@ void Game::render()
 		m_window.draw(m_AkiraTalk); //diologue  
 		m_window.draw(m_akiraName); //name in text box 
 	}
-	if (counter == 1) // second scene
+	else if (counter == 1) // second scene
 	{
 		m_window.draw(m_AkariSprite); //character sprite
 		m_window.draw(m_textBoxSprite); //text box
 		m_window.draw(m_AkiraTalk); //diologue 
 		m_window.draw(m_akiraName); //name in text box
 	}
-	if (counter == 2) // third scene
+	else if (counter == 2) // third scene
 	{
 		m_window.draw(m_AkariSprite);  //character sprite
 		m_window.draw(m_textBoxSprite); //text box
 		m_window.draw(m_HajimeText); // player diologue
 		m_window.draw(m_HajimeName); // player name
 	}
-	if (counter == 3) // fourth scene
+	else if (counter == 3) // fourth scene
 	{
 		m_window.draw(m_AkariSprite); //character sprite
 		m_window.draw(m_textBoxSprite); //text box
 		m_window.draw(m_AkiraTalk);
 		m_window.draw(m_akiraName); // character name
 	}
-	if (counter == 4) // fifth scene
+	else if (counter == 4) // fifth scene
 	{
 		m_window.draw(m_AkariSprite); //character sprite 
 		m_window.draw(m_textBoxSprite); //text box 
 		m_window.draw(m_AkiraTalk); // character diologue 
 		m_window.draw(m_akiraName); // character name 
 	} 
-	if (counter == 5) // sixth scene
+	else if (counter == 5) // sixth scene
 	{
 		m_window.draw(m_AkariSprite); // character sprite
 		m_window.draw(m_textBoxSprite); // text box
 	}
-	if (counter == 6) // seventh scene
+	else if (counter == 6) // seventh scene
 	{
 		m_window.draw(m_textBoxSprite); //text box  
 		m_window.draw(m_HajimeText); // player diologue
 		m_window.draw(m_HajimeName); // player name
 	}
-	if (counter == 7) // eighth scene
+	else if (counter == 7) // eighth scene
 	{
 		m_window.draw(m_yuriSprite); //character sprite
 		m_window.draw(m_textBoxSprite);  //text box  
 		m_window.draw(m_HajimeText);  // player diologue
 		m_window.draw(m_HajimeName);  // player name
 	}
-	if (counter == 8) // ninth scene
+	else if (counter == 8) // ninth scene
 	{
 		m_window.draw(m_yuriSprite); //character sprite
 		m_window.draw(m_textBoxSprite); // text box
 	}
-	if (counter == 9) // tenth scene
+	else if (counter == 9) // tenth scene
 	{
 		m_window.draw(m_yuriSprite);  //character sprite
 		m_window.draw(m_textBoxSprite); //text box
 		m_window.draw(m_yuriName); // dialogue name
 		m_window.draw(m_yuriTalk); // dialogue text
 	}
-	if (counter == 10) // eleventh scene
+	else if (counter == 10) // eleventh scene
 	{
 		m_window.draw(m_yuriSprite); //character sprite
 		m_window.draw(m_textBoxSprite);  //text box
 		m_window.draw(m_yuriName);  // dialogue name
 		m_window.draw(m_yuriTalk);  // dialogue text
 	}
-	if (counter == 11)  //12th scene
+	else if (counter == 11)  //12th scene
 	{
 		m_window.draw(m_yuriSprite); //character sprite
 		m_window.draw(m_textBoxSprite);  //text box
@@ -244,11 +250,33 @@ void Game::render()
 		m_window.draw(m_choiceText1A);  // choice box text A
 		m_window.draw(m_choiceText1B);  // choice box text B
 	}
-	if (counter == 12 && choice1A == true && choice1B == false) // 13 scene choice A
+	else if (counter == 12 && choice1A == true && choice1B == false) // 13 scene choice A
 	{
-		m_window.draw(m_classroomSprite); 
+		m_window.draw(m_yuriSprite); //character sprite 
+		m_window.draw(m_textBoxSprite);  //text box 
+		m_window.draw(m_HajimeText);  // player diologue
+		m_window.draw(m_HajimeName);  // player name
 	}
-	if (counter == 12 && choice1B == true && choice1A == false) // 13 scene choice B 
+	else if (counter == 13 && choice1A == true)
+	{
+		m_window.draw(m_yuriSprite); //character sprite 
+		m_window.draw(m_textBoxSprite);  //text box 
+		m_window.draw(m_yuriName);  // dialogue name
+		m_window.draw(m_yuriTalk);  // dialogue text
+
+	}
+	else if (counter == 14 && choice1A == true)
+	{
+		m_window.draw(m_yuriSprite); //character sprite 
+		m_window.draw(m_textBoxSprite); //text box 
+	}
+	else if (counter == 15 && choice1A == true)
+	{ 
+		m_window.draw(m_textBoxSprite); //text box 
+		m_window.draw(m_HajimeText);
+		m_window.draw(m_HajimeName);
+	}
+	else if (counter == 12 && choice1B == true && choice1A == false) // 13 scene choice B 
 	{
 		m_window.draw(m_librarySprite); 
 	}
@@ -267,16 +295,16 @@ void Game::akari() // a function for the sprite and textures for the character a
 	{
 		m_AkariSprite.setTexture(m_AkariTextureSerious); 
 	}
-	if (counter == 2) // scene three 
+	else if (counter == 2) // scene three 
 	{
 		m_AkariSprite.setColor(colour); 
 	}
-	if (counter == 3) // scene four
+	else if (counter == 3) // scene four
 	{
 		m_AkariSprite.setColor(Default);
 		m_AkariSprite.setTexture(m_AkariTextureHappy);
 	}
-	if (counter == 4) // scene five
+	else if (counter == 4) // scene five
 	{ 
 		m_AkariSprite.setTexture(m_AkariTexture); 
 	}
@@ -289,16 +317,16 @@ void Game::akariText() // a function for the dialogue text for the character aka
 		m_AkiraTalk.setString("so your the new kid? \nvery well, all you have to know is follow the rules and dont cause trouble or else.......");
 		m_sigh.play(); // play audio file
 	} 
-	if (counter == 1) // scene two 
+	else if (counter == 1) // scene two 
 	{ 
 		m_AkiraTalk.setString("Do i make myself clear?"); 
 	} 
-	if (counter == 3) // scene four
+	else if (counter == 3) // scene four
 	{
 		m_AkiraTalk.setString("Great! then we shouldn't have a problem"); 
 		
 	}
-	if (counter == 4) // scene five
+	else if (counter == 4) // scene five
 	{
 		m_AkiraTalk.setString("Well i have to get going New kid. \nthe student council work never rests you know!");
 	}
@@ -310,28 +338,36 @@ void Game::yuri()
 	{
 		m_yuriSprite.setTexture(m_yuriTextureNutrual2);
 	}
-
-
-
-
+	else if (counter == 12 && choice1A == true)
+	{
+		m_yuriSprite.setColor(colour);
+	}
+	else if (counter == 13 && choice1A == true)
+	{
+		m_yuriSprite.setColor(Default);
+		m_yuriSprite.setTexture(m_yuriTextureSad1);
+	}
 }
 
 void Game::yuriText()
 {
-	if (counter == 9) //10th scene
+	if (counter == 8)
+	{
+		m_hi.play();  
+	}
+	else if (counter == 9) //10th scene
 	{
 		m_yuriTalk.setString("h-hello, i'm Yuri. your the new kid right? \nI-I couldn't help but notice.");
 	}
-	if (counter == 10) // 11th scene
+	else if (counter == 10) // 11th scene
 	{
 		m_yuriTalk.setString("t-that you havent spokent to anyone yet. \nso i was wondering if you w-wanted to hang out?");
 	}
-
-
-
-
-
-
+	else if (counter == 13 && choice1A == true)
+	{
+		m_yuriTalk.setString("o-oh.... \ns-sorry for annoying you, i'll b-be going t-then.");
+		m_crying.play(); 
+	}
 }
 
 void Game::HakimeText() // function for the player's dialogue text
@@ -341,13 +377,21 @@ void Game::HakimeText() // function for the player's dialogue text
 		m_HajimeText.setString("U-Understood ma'am"); 
 		m_chuckle.play(); 
 	} 
-	if (counter == 6) // scene seven
+	else if (counter == 6) // scene seven
 	{
 		m_HajimeText.setString("so thats the student council president? \nI dont want to get on her bad side.....");
 	}
-	if (counter == 7) // scene eight
+	else if (counter == 7) // scene eight
 	{
 		m_HajimeText.setString("i still have time before class, what should i do?");
+	}
+	else if (counter == 12 && choice1A == true)
+	{
+		m_HajimeText.setString("no way nerd! go annoy someone else!");
+	}
+	else if (counter == 15 && choice1A == true)
+	{
+		m_HajimeText.setString("wow, i suck.........");
 	}
 }
 void Game::movement() // a function to determain the movement of the characters
@@ -358,9 +402,15 @@ void Game::movement() // a function to determain the movement of the characters
 		m_AkariLocation += m_AkariVilocity;
 		m_AkariSprite.setPosition(m_AkariLocation);
 	}
-	if (counter == 8) // 7th scene
+	else if (counter == 8) // 7th scene
 	{
 		m_yuriVilocity += Speed;
+		m_yuriLocation += m_yuriVilocity;
+		m_yuriSprite.setPosition(m_yuriLocation);
+	}
+	else if (counter == 14 && choice1A == true)
+	{
+		m_yuriVilocity += Speed * 1.50f;
 		m_yuriLocation += m_yuriVilocity;
 		m_yuriSprite.setPosition(m_yuriLocation);
 	}
@@ -446,7 +496,7 @@ void Game::setupSound() // a function to load and play audio files
 		std::cout << "problem with sound" << std::endl;
 	}
 	m_theme.setBuffer(m_themeMusic);
-	m_theme.setVolume(25.f); 
+	m_theme.setVolume(10.f); 
 	m_theme.setLoop(true);
 	m_theme.play();
 
@@ -461,6 +511,27 @@ void Game::setupSound() // a function to load and play audio files
 		std::cout << "problem with sound" << std::endl;
 	}
 	m_sigh.setBuffer(m_sighSound);
+
+	if (!m_hiSound.loadFromFile("ASSETS\\AUDIO\\hi.flac")) 
+	{
+		std::cout << "problem with sound" << std::endl; 
+	}
+	m_hi.setBuffer(m_hiSound);
+	m_hi.setVolume(100.0f);
+
+	if (!m_clickSound.loadFromFile("ASSETS\\AUDIO\\click.flac")) 
+	{
+		std::cout << "problem with sound" << std::endl; 
+	}
+	m_click.setBuffer(m_clickSound); 
+	m_click.setVolume(100.0f); 
+
+	if (!m_cryingSound.loadFromFile("ASSETS\\AUDIO\\crying.flac")) 
+	{
+		std::cout << "problem with sound" << std::endl; 
+	}
+	m_crying.setBuffer(m_cryingSound); 
+	m_crying.setVolume(25.0f);
 }
 
 /// <summary>
@@ -492,6 +563,10 @@ void Game::setupSprite()
 		std::cout << "problem loading yuri nutrual1" << std::endl;
 	}
 	if (!m_yuriTextureNutrual2.loadFromFile("ASSETS\\IMAGES\\yuri_N2.png"))
+	{
+		std::cout << "problem loading yuri nutrual2" << std::endl;
+	}
+	if (!m_yuriTextureSad1.loadFromFile("ASSETS\\IMAGES\\yuri_S1.png"))
 	{
 		std::cout << "problem loading yuri nutrual2" << std::endl;
 	}

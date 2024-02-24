@@ -97,7 +97,7 @@ private:
 	sf::Color colour{ 255u , 255u, 255u, 155u };  // used to make the text box see though and the characters see through when not talking
 	sf::Color Default{ 255u , 255u, 255u, 255u }; // used to set the characters textures to normal 
 	sf::Color Purple{ 160u , 32u, 240u, 255u };
-	sf::Vector2f Speed = { -5.0f , 0.0f }; 
+	sf::Vector2f Speed = { -0.50f , 0.00f }; 
 
 	sf::RectangleShape m_choice1A; // choice block A
 	sf::RectangleShape m_choice1A_Boarder; // choice boarder A
@@ -119,6 +119,15 @@ private:
 
 	sf::SoundBuffer m_sighSound; // sigh sound effect 
 	sf::Sound m_sigh; 
+
+	sf::SoundBuffer m_hiSound; // hi sound effect
+	sf::Sound m_hi; 
+
+	sf::SoundBuffer m_clickSound; // click sound effect
+	sf::Sound m_click;
+
+	sf::SoundBuffer m_cryingSound; // crying sound efect
+	sf::Sound m_crying;
 
 	bool m_exitGame; // control exiting game
 
