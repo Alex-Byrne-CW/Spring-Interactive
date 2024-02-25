@@ -286,6 +286,10 @@ void Game::yuri()
 	}
 }
 
+void Game::satoru() // function for the satoru character sprite
+{
+}
+
 void Game::yuriText()
 {
 	if (counter == 8) // 9th scene
@@ -325,6 +329,10 @@ void Game::yuriText()
 		m_dialogueText.setString("we are going to have so much fun, i promise!");
 		m_dialogueName.setString("yuri");
 	}
+}
+
+void Game::satoruText() // function for the satoru text
+{
 }
 
 void Game::HakimeText() // function for the player's dialogue text
@@ -369,7 +377,7 @@ void Game::HakimeText() // function for the player's dialogue text
 	}
 	else if (counter == 12 && choice1B == true) // 13th scene B
 	{
-		m_dialogueText.setString("sure thing yuir! let's hang out!");
+		m_dialogueText.setString("sure thing yuri! let's hang out!");
 		m_dialogueName.setString("Hakime");
 		m_dialogueName.setFillColor(sf::Color::Yellow);
 		m_dialogueText.setFillColor(sf::Color::Yellow);
@@ -530,17 +538,37 @@ void Game::setupSprite()
 	{
 		std::cout << "problem loading yuri nutrual2" << std::endl;
 	}
-	if (!m_yuriTextureHappy1.loadFromFile("ASSETS\\IMAGES\\yuri_H1.png"))
+	if (!m_yuriTextureHappy1.loadFromFile("ASSETS\\IMAGES\\yuri_H1.png")) // the happy_1 texture for yuri
 	{
 		std::cout << "problem loading yuri Happy1" << std::endl;
 	}
-	if (!m_yuriTextureHappy2.loadFromFile("ASSETS\\IMAGES\\yuri_H2.png"))
+	if (!m_yuriTextureHappy2.loadFromFile("ASSETS\\IMAGES\\yuri_H2.png")) // the happy_2 texture for yuri
 	{
 		std::cout << "problem loading yuri Happy2" << std::endl;
 	}
 	m_yuriSprite.setTexture(m_yuriTextureNutrual1);
 	m_yuriSprite.setPosition(1600.0f, -250.0f);
 	m_yuriSprite.setScale(1.5f, 1.5f);
+
+	if (!m_satoruTextureNutrual1.loadFromFile("ASSETS\\IMAGES\\Satoru_N1.png")) // the nutrual_1 texture for satoru
+	{
+		std::cout << "problem loading satoru Nutrual1" << std::endl;
+	}
+	if (!m_satoruTextureHappy1.loadFromFile("ASSETS\\IMAGES\\Satoru_H1.png")) // the happy_1 texture for satoru
+	{
+		std::cout << "problem loading satoru Happy1" << std::endl; 
+	}
+	if (!m_satoruTextureHappy2.loadFromFile("ASSETS\\IMAGES\\Satoru_H2.png")) // the happy_2 texture for satoru
+	{
+		std::cout << "problem loading satoru Happy2" << std::endl;
+	}
+	if (!m_satoruTextureAngry1.loadFromFile("ASSETS\\IMAGES\\Satoru_A2.png")) // the angry_1 texture for satoru
+	{
+		std::cout << "problem loading satoru Angry1" << std::endl;
+	}
+	m_satoruSprite.setTexture(m_satoruTextureNutrual1);
+	m_satoruSprite.setPosition(-670.0f , -250.0f);
+	m_satoruSprite.setScale(1.5f, 1.5f); 
 }
 
 void Game::setupBackgrounds()

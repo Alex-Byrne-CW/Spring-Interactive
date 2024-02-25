@@ -33,9 +33,11 @@ private:
 	
 	void akari(); // a function to set up the sprite textures for the character akari 
 	void yuri(); // function for the yuri character sprite details
+	void satoru(); // function for the satoru character sprite
 
 	void akariText(); // a function to set and change the dialogue of the character akari 
 	void yuriText(); // function for the yuri character text
+	void satoruText(); // function for the satoru text
 	void HakimeText(); // a function to set up and change the text for the player character
 
 	void movement(); // a function to determain the movement of the characters
@@ -78,11 +80,22 @@ private:
 	sf::Texture m_yuriTextureHappy1;  // the first Happy texture for the yuri character
 	sf::Texture m_yuriTextureHappy2;  // the second Happy texture for the yuri character
 	sf::Texture m_yuriTextureSad1;  // the first sad texture for the yuri character
-	sf::Sprite m_yuriSprite; // the sprite for the yri character
+	sf::Sprite m_yuriSprite; // the sprite for the yuri character
 	bool yuriSprite = { true };
+
 
 	sf::Vector2f m_yuriLocation = { 1600.0f, -250.0f}; // yuri location
 	sf::Vector2f m_yuriVilocity = { 0.0f , 0.0f }; // yuri vilosity for movements
+
+	sf::Texture m_satoruTextureNutrual1; // the first nutural texture for the satoru character
+	sf::Texture m_satoruTextureHappy1; // the first Happy texture for the satoru character
+	sf::Texture m_satoruTextureHappy2; // the second nutural texture for the satoru character
+	sf::Texture m_satoruTextureAngry1; // the first Angry texture for the satoru character
+	sf::Sprite m_satoruSprite; // the sprite for satoru sprite
+	bool satoruSprite = { true };
+
+	sf::Vector2f m_satoruLocation = { -670.0f , -250.0f };
+	sf::Vector2f m_satoruVilocity = { 0.0f , 0.0f };
 
 	sf::Text m_dialogueName; // used to store the  name in the text box 
 	sf::Text m_dialogueText; // used to store the  dialogue text 
